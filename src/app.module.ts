@@ -6,16 +6,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmConfig } from './config/typeorm.config';
 import { ConfigModule } from '@nestjs/config';
 
-
 @Module({
   imports: [
-    CategoriesModule.forRoot({
-      isGlobal: true,
-    }), // Importing CategoriesModule with forRoot method
+    CategoriesModule, 
     TypeOrmModule.forRootAsync({
-      useFactory: TypeOrmConfig
+      useFactory: TypeOrmConfig,
     }),
-    CategoriesModule],
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
